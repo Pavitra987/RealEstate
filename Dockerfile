@@ -39,8 +39,11 @@ RUN npm install && npm run build
 RUN mkdir -p storage/framework/cache \
     storage/framework/sessions \
     storage/framework/views \
+    storage/logs \
     bootstrap/cache \
+    && touch storage/logs/laravel.log \
     && chown -R www-data:www-data storage bootstrap/cache \
+    && chmod -R 775 storage bootstrap/cache \
     && a2enmod rewrite
 
 # Start Apache
